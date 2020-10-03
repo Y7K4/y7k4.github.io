@@ -1,5 +1,5 @@
 ---
-title: My blogging style guide
+title: My Blogging Style Guide
 key: 20201001
 tag: metablog
 ---
