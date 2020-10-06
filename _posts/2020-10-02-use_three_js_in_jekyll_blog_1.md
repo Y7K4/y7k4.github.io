@@ -8,7 +8,13 @@ tags:
 - metablog
 ---
 
-In this post, I'll get started with [three.js](https://github.com/mrdoob/three.js/) by trying a simple example.
+{%- capture next_in_series -%}
+  {% post_url 2020-10-05-use_three_js_in_jekyll_blog_2 %}
+{%- endcapture -%}
+
+
+
+This is the 1st post in the _Use three.js in Jekyll Blog_ series ([>>]({{next_in_series}})). In this post, I'll get started with [three.js](https://github.com/mrdoob/three.js/) by trying a simple example.
 
 
 
@@ -24,15 +30,15 @@ In this post, I'll get started with [three.js](https://github.com/mrdoob/three.j
 
 
 ## Introduction
+
 My goal is to create some fancy demos on my blog, and three.js, a popular JavaScript 3D library, can be very useful to that end. The _Use three.js in Jekyll Blog_ series will record my journey in learning three.js. Hopefully I can learn the basics of HTML, CSS and JS as well.
 
 
 
 ## Before we start
 
-
-
 ### Create a container
+
 To resize and locate the 3D content in jekyll blog posts, we need to create a container as the canvas.
 
 The simplest example looks like this:
@@ -40,7 +46,7 @@ The simplest example looks like this:
 <div id='cube'></div>
 ```
 
-This is the most elegant way I found to maintain the aspect ratio. Here the outer div controls the aspect ratio, while the inner div holds the 3D content.
+This is a common way I found to maintain the aspect ratio. Here the outer div controls the aspect ratio, while the inner div holds the 3D content. A more elegant way is shown [here]({{next_in_series}}).
 ```css
 .threejs {
   position: relative;
@@ -68,11 +74,14 @@ var width = container.clientWidth;
 var height = container.clientHeight;
 ```
 
-**TOOD**: make this responsive in three.js, i.e., automatically resize the content when the window is resized.
+~~**TODO**: make this responsive in three.js, i.e., automatically resize the content when the window is resized.~~
+
+Learn [how to make this responsive in three.js]({{next_in_series}}#threejs-on-window-resize), i.e., automatically resize the content when the window is resized.
 
 
 
 ### Include the library
+
 This can be done by adding the following line
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
@@ -84,11 +93,13 @@ where the src comes from CDN or a local copy of the minified library.
 
 
 ## Hello, cube!
+
 The spinning cube demo is originally obtained from [here](https://github.com/mrdoob/three.js/blob/dev/README.md) and a great explaination can be found [here](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). Essentially, we need to set up three things: scene, camera and renderer to display the 3D content using three.js.
 
 
 
 ### Scene
+
 Here is a unit cube.
 ```javascript
 // scene
@@ -103,6 +114,7 @@ scene.add(mesh);
 
 
 ### Camera
+
 Here is a perspective camera. `70` is the field of view (FOV) in degrees, `width / height` is the aspect ratio, `0.01` is the near clipping plane, and `10` is the far clipping plane.
 ```javascript
 // camera
@@ -113,6 +125,7 @@ camera.position.z = 2;
 
 
 ### Renderer
+
 Here is a WebGL renderer. Don't forget to append it as the container's child.
 ```javascript
 // renderer
@@ -121,9 +134,12 @@ renderer.setSize(width, height);
 container.appendChild(renderer.domElement);
 ```
 
+**TODO**: `antialias: true` does not work on my phone. To be investigated. Try [this](https://github.com/mrdoob/three.js/issues/7655)?
+
 
 
 ### Animation
+
 Here is the so-called render or animate loop.
 ```javascript
 // animation
