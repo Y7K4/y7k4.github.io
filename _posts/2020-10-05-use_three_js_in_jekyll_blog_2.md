@@ -7,6 +7,7 @@ tags:
 - JavaScript
 - CSS
 - metablog
+modify_date: 2020-10-06
 ---
 
 {%- capture prev_in_series -%}
