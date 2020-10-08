@@ -6,13 +6,14 @@ tags:
 - crypto-js
 - JavaScript
 mathjax: true
+modify_date: 2020-10-08
 ---
 
 This is the 1st post in the _Publicly Hide Magic Strings_ series. A common form of website Easter eggs is magic strings, but how can they be hidden in a public repository? Encryption. In this post, I'll develop a magic string encryption tool based on [crypto-js](https://github.com/brix/crypto-js).
 
 
 
-<!-- more -->
+<!--more-->
 
 
 
@@ -28,7 +29,7 @@ Here will show the keys $KQ$ and $KA$, which can be saved in the public reposito
 <textarea id="KQ" placeholder="KQ" readonly></textarea>
 <textarea id="KA" placeholder="KA" readonly></textarea>
 
-Finally try to input your $Q$ or the following. Only the encrypted pairs of $(KQ, KA)$ are used in code.
+Finally input your $Q$ or any of the following to test. Only the encrypted pairs of $(KQ, KA)$ are used in code.
 
 * `Y7K4`
 * `Meow?`
@@ -81,7 +82,7 @@ $$A = \mathrm{decrypt}(KA, Q)$$
 
 ### Hash
 
-The hash function I use is [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), which is a common choice for password hashing.
+The hash function I use is [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), which is a common choice for password hashing. Note that if the number of iterations is too large, then the PBKDF2 becomes slow, making the search box less responsive; but if it's too small, then the hash becomes less secure.
 
 ```javascript
 // KQ = hash(Q)
@@ -125,7 +126,6 @@ function decrypt(KA, Q) {
 
 
 <!-- code -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
