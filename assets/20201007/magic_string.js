@@ -1,7 +1,9 @@
 // KQ = hash(Q)
 function hash(Q) {
   const salt = "Y7K4's magic salt for PBKDF2";
-  var KQ = CryptoJS.PBKDF2(Q, salt, { iterations: 1000 });
+  var KQ = CryptoJS.enc.Base64.stringify(
+    CryptoJS.PBKDF2(Q, salt, { iterations: 1000 })
+  );
   return KQ;
 }
 
@@ -33,9 +35,9 @@ function generateKeys() {
 function validate() {
   // (KQ, KA) pairs
   var dict = {
-    "80f950a4fba000b3f55e4dd291eeca44": "93xk",
-    "4e13bce4038cb450d1efb1ad258e77c9": "KBrpYao=",
-    "cc65ca62a5985f2b057fb6866526e355": "HptLJZfZEO8D",
+    "gPlQpPugALP1Xk3Ske7KRA==": "93xk",
+    "ThO85AOMtFDR77GtJY53yQ==": "KBrpYao=",
+    "zGXKYqWYXysFf7aGZSbjVQ==": "HptLJZfZEO8D",
   };
   dict[$("#KQ").val()] = $("#KA").val();
 
@@ -48,8 +50,23 @@ function validate() {
     // show A in a notification
     new Noty({
       text: A,
-      type: 'success',
+      type: "success",
       timeout: 3000,
     }).show();
   }
 }
+
+// button to copy KQ & KA in yaml format
+var clipboard = new ClipboardJS(".copy_btn", {
+  text: function (trigger) {
+    return $("#KQ").val() + ": " + $("#KA").val();
+  },
+});
+
+clipboard.on("success", function (e) {
+  $(e.trigger).text("Copied!");
+  e.clearSelection();
+  setTimeout(function () {
+    $(e.trigger).text("Copy KQ: KA");
+  }, 1000);
+});

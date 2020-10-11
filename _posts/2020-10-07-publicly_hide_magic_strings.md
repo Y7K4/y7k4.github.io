@@ -6,7 +6,7 @@ tags:
 - crypto-js
 - JavaScript
 mathjax: true
-modify_date: 2020-10-08
+modify_date: 2020-10-10
 ---
 
 This is the 1st post in the _Publicly Hide Magic Strings_ series. A common form of website Easter eggs is magic strings, but how can they be hidden in a public repository? Encryption. In this post, I'll develop a magic string encryption tool based on [crypto-js](https://github.com/brix/crypto-js).
@@ -25,6 +25,10 @@ Input $Q$ and $A$ below.
 <textarea id="A" placeholder="A" oninput="generateKeys()"></textarea>
 
 Here will show the keys $KQ$ and $KA$, which can be saved in the public repository.
+
+<button class="button button--success button--pill copy_btn" data-clipboard-text="123">
+  Copy KQ: KA
+</button>
 
 <textarea id="KQ" placeholder="KQ" readonly></textarea>
 <textarea id="KA" placeholder="KA" readonly></textarea>
@@ -88,7 +92,9 @@ The hash function I use is [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), which
 // KQ = hash(Q)
 function hash(Q) {
   const salt = "Y7K4's magic salt for PBKDF2";
-  var KQ = CryptoJS.PBKDF2(Q, salt, { iterations: 1000 });
+  var KQ = CryptoJS.enc.Base64.stringify(
+    CryptoJS.PBKDF2(Q, salt, { iterations: 1000 })
+  );
   return KQ;
 }
 ```
@@ -119,8 +125,7 @@ function decrypt(KA, Q) {
 
 ## What's next
 
-* To make it easy to understand, the keys come in pairs, but as $KQ$ has a fixed length, two keys in a pair can be combined together.
-* Embed this into the search box.
+* Embed the magic string system into the search box.
 * Create a lot of magic strings for fun.
 
 
@@ -128,6 +133,7 @@ function decrypt(KA, Q) {
 <!-- code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"/>
 <link rel="stylesheet" href="/assets/20201007/style.css">
