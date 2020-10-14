@@ -42,8 +42,17 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   };
 
   function render(data) {
-    if (!data) { return null; }
     var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+
+    // magic strings
+    A = magicString(window.search.getSearchInput().value);
+    if (A) {
+      var converter = new showdown.Converter();
+      $root.append(renderHeader('a secret place'));
+      $root.append($(converter.makeHtml(A)));
+    }
+
+    // search results
     keys = Object.keys(data);
     for (i = 0; i < keys.length; i++) {
       key = keys[i];

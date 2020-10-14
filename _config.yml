@@ -223,3 +223,12 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+
+
+## => Magic Strings
+##############################
+magic_strings:
+  VJfnFW2Jwe4R72vBXTpWUw==: 3seXsYDJ1XIxQgpBvew6AF7Z2OM=
+  gPlQpPugALP1Xk3Ske7KRA==: 8XB+3BOQ8CE07g2Deo9LE4eo1AUkvzmXFgmMGxObhPj0Mm/EHP5P5xJYFkl1/FCgCe74qLRfZbxF
+  JrN9rO7Q3VB40cgUzK4ovQ==: fPkX93NY8LYeWguqOQeA0FWSTyD28+ts0/Kv2a5GpNzzPm+fMvzK/8s=
+  ThO85AOMtFDR77GtJY53yQ==: KBrjc+7Tr7ASMQ==
