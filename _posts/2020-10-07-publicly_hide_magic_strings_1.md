@@ -6,10 +6,14 @@ tags:
 - crypto-js
 - JavaScript
 mathjax: true
-modify_date: 2020-10-10
+modify_date: 2020-10-14
 ---
 
-This is the 1st post in the _Publicly Hide Magic Strings_ series. A common form of website Easter eggs is magic strings, but how can they be hidden in a public repository? Encryption. In this post, I'll develop a magic string encryption tool based on [crypto-js](https://github.com/brix/crypto-js).
+{%- capture next_in_series -%}
+  {% post_url 2020-10-14-publicly_hide_magic_strings_2 %}
+{%- endcapture -%}
+
+This is the 1st post in the _Publicly Hide Magic Strings_ series ([>>]({{next_in_series}})). A common form of website Easter eggs is magic strings, but how can they be hidden in a public repository? Encryption. In this post, I'll develop a magic string encryption tool based on [crypto-js](https://github.com/brix/crypto-js).
 
 
 
@@ -19,12 +23,12 @@ This is the 1st post in the _Publicly Hide Magic Strings_ series. A common form 
 
 ***
 
-Input $Q$ and $A$ below.
+Input `Q` and `A` below.
 
 <textarea id="Q" placeholder="Q" oninput="generateKeys()"></textarea>
 <textarea id="A" placeholder="A" oninput="generateKeys()"></textarea>
 
-Here will show the keys $KQ$ and $KA$, which can be saved in the public repository.
+Here will show the keys `KQ` and `KA`, which can be saved in the public repository.
 
 <button class="button button--success button--pill copy_btn" data-clipboard-text="123">
   Copy KQ: KA
@@ -33,7 +37,7 @@ Here will show the keys $KQ$ and $KA$, which can be saved in the public reposito
 <textarea id="KQ" placeholder="KQ" readonly></textarea>
 <textarea id="KA" placeholder="KA" readonly></textarea>
 
-Finally input your $Q$ or any of the following to test. Only the encrypted pairs of $(KQ, KA)$ are used in code.
+Finally input your `Q` or any of the following to test. Only the encrypted pairs of `(KQ, KA)` are used in code.
 
 * `Y7K4`
 * `Meow?`
@@ -62,23 +66,23 @@ However, nothing is really a secret in a public repository. If the website visit
 
 ### Concepts
 
-Let $Q$ be a magic string and $A$ be the corresponding response, i.e., when the user inputs $Q$ in the search box, the website should display $A$ in addition to the search results. Multiple pairs of $(Q, A)$ form the website Easter eggs.
+Let `Q` be a magic string and `A` be the corresponding response, i.e., when the user inputs `Q` in the search box, the website should display `A` in addition to the search results. Multiple pairs of `(Q, A)` form the website Easter eggs.
 
-After encryption, multiple pairs of keys $(KQ, KA)$ are explicitly stored in the public repository. It should be practically impossible to know $(Q, A)$ based on $(KQ, KA)$.
+After encryption, multiple pairs of keys `(KQ, KA)` are explicitly stored in the public repository. It should be practically impossible to know `(Q, A)` based on `(KQ, KA)`.
 
 
 
 ### Workflow
 
-Given a pair $(Q, A)$, compute the key pair $(KQ, KA)$ as follows and save it in the public repository. Note that $Q$ (after hashing) is used as the key for encryption. This avoids people from getting $A$ without even knowing $Q$.
+Given a pair `(Q, A)`, compute the key pair `(KQ, KA)` as follows and save it in the public repository. Note that `Q` (after hashing) is used as the key for encryption. This avoids people from getting `A` without even knowing `Q`.
 
-$$KQ = \mathrm{hash}(Q)$$
+$$\mathrm{KQ} = \mathrm{hash}(\mathrm{Q})$$
 
-$$KA = \mathrm{encrypt}(A, Q)$$
+$$\mathrm{KA} = \mathrm{encrypt}(\mathrm{A}, \mathrm{Q})$$
 
-When the user input $Q$ is received, compute its hash $KQ$ and look up in the list of keys. If $KQ$ is found, decrypt the corresponding $KA$ with $Q$ as the key and get the result $A$; otherwise do nothing.
+When the user input `Q` is received, compute its hash `KQ` and look up in the list of keys. If `KQ` is found, decrypt the corresponding `KA` with `Q` as the key and get the result `A`; otherwise do nothing.
 
-$$A = \mathrm{decrypt}(KA, Q)$$
+$$\mathrm{A} = \mathrm{decrypt}(\mathrm{KA}, \mathrm{Q})$$
 
 
 
