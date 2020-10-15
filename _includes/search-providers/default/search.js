@@ -45,7 +45,8 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
 
     // magic strings
-    A = magicString(window.search.getSearchInput().value);
+    var Q = window.search.getSearchInput().value;
+    var A = magicString(Q);
     if (A) {
       var converter = new showdown.Converter();
       $root.append(renderHeader('a secret place'));
