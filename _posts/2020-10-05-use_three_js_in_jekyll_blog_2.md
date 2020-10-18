@@ -29,7 +29,7 @@ This is the 2nd post in the _Use three.js in Jekyll Blog_ series ([<<]({{prev_in
 
 <!-- Spinning Cube Demo -->
 <div id="cube" style="--aspect-ratio:16/9;">
-  <div id='param' class='dat-gui'>
+  <div id="param" class="dat-gui">
   </div>
 </div>
 
@@ -95,7 +95,7 @@ Add a div inside the div with fixed aspect ratio.
 
 {% highlight html %}
 <div id="cube" style="--aspect-ratio:16/9;">
-  <div id='param' class='dat-gui'>
+  <div id="param" class="dat-gui">
   </div>
 </div>
 {% endhighlight %}
