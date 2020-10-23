@@ -36,7 +36,10 @@ magic_strings:
 
 ## Include the functions
 
-The included functions are in `/_includes/magic-strings/magic_string.js`. Most of the them are already developed [here]({{prev_in_series}}), the only difference is that now the dictionary of keys is loaded from `_config.yml` via the [Liquid filter](https://jekyllrb.com/docs/liquid/filters/) jsonify.
+The included functions are in `/_includes/magic-strings/magic_string.js`. Most of the them are already developed [here]({{prev_in_series}}), the only differences are
+
+1. Now the dictionary of keys is loaded from `_config.yml` via the [Liquid filter](https://jekyllrb.com/docs/liquid/filters/) jsonify.
+2. Now `Q` in lowercase will also be examined if `Q` fails to match. This adds a bit of flexibility in letter cases.
 
 `magicString(Q)` returns the response `A` if `Q` matches, otherwise `""`.
 

@@ -25,12 +25,15 @@ function decrypt(KA, Q) {
 function magicString(Q) {
   var dict = {{ site.magic_strings | jsonify }};
 
-  var KQ = hash(Q);
-  if (KQ in dict) {
-    var KA = dict[KQ];
-    var A = decrypt(KA, Q);
-    return A;
-  } else {
-    return "";
+  var Q_list = [Q, Q.toLowerCase()];
+  for (Q_i of Q_list) {
+    var KQ = hash(Q_i);
+    if (KQ in dict) {
+      var KA = dict[KQ];
+      var A = decrypt(KA, Q_i);
+      return A;
+    }
   }
+
+  return "";
 }
