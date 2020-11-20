@@ -6,7 +6,7 @@ tags:
 - crypto-js
 - JavaScript
 mathjax: true
-modify_date: 2020-10-14
+modify_date: 2020-11-20
 ---
 
 {%- capture next_in_series -%}
@@ -30,7 +30,7 @@ Input `Q` and `A` below.
 
 Here will show the keys `KQ` and `KA`, which can be saved in the public repository.
 
-<button class="button button--success button--pill copy_btn" data-clipboard-text="123">
+<button class="button button--success button--pill copy_btn">
   Copy KQ: KA
 </button>
 
