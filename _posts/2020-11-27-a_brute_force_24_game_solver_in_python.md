@@ -21,7 +21,7 @@ Maintain a list of strings (expressions), merge two into one every time, and eva
 
 ## Code
 
-{% highlight python %}
+```python
 from itertools import permutations
 
 def solve(nums, target=24, ops='+-*/'):
@@ -56,5 +56,13 @@ no solution
 no solution
 (((1*1)*1)*1)*1
 '''
+```
 
-{% endhighlight %}
+I was trying to use [Brython](https://brython.info/) to run the solver on this page. It worked and displayed the result in the console after a ridiculously long time... Probably tens of times longer than running pure Python code, which is even much worse than I found in other people's comments. Maybe I was doing something wrong? Anyway, I'll show the extra code below.
+
+```html
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython_stdlib.min.js"></script>
+<script>window.onload = brython;</script>
+<script type="text/python" src="/assets/20201127/solver.py"></script>
+```
