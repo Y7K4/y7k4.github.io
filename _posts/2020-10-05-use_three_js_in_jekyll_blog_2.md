@@ -7,16 +7,20 @@ tags:
 - JavaScript
 - CSS
 - metablog
-modify_date: 2020-10-06
+modify_date: 2020-12-07
 ---
 
 {%- capture prev_in_series -%}
   {% post_url 2020-10-02-use_three_js_in_jekyll_blog_1 %}
 {%- endcapture -%}
 
+{%- capture next_in_series -%}
+  {% post_url 2020-12-07-use_three_js_in_jekyll_blog_3 %}
+{%- endcapture -%}
 
 
-This is the 2nd post in the _Use three.js in Jekyll Blog_ series ([<<]({{prev_in_series}})), introducing
+
+This is the 2nd post in the _Use three.js in Jekyll Blog_ series ([<<]({{prev_in_series}}) - [>>]({{next_in_series}})), introducing
 1. fixed aspect ratio;
 2. [three.js](https://github.com/mrdoob/three.js/) on window resize;
 3. [dat.gui.js](https://github.com/dataarts/dat.gui) for control panel.
