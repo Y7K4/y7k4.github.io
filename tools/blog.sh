@@ -5,12 +5,13 @@ BLOG_ROOT="$HOME/Blog"
 # blog {cd, edit, list, new, root, run} [args]
 # Examples:
 #   blog cd
-#   blog cd assets/
+#   blog cd assets/share/
 #   blog edit
-#   blog edit ran
-#   blog edit welcome gedit
+#   blog edit 2020-11
+#   blog edit "-i MAGIC" "vim -p"
 #   blog list
 #   blog list 2020-11
+#   blog list -i MAGIC
 #   blog new
 #   blog root
 #   blog
@@ -41,7 +42,7 @@ function blog {
       local template="$BLOG_ROOT/tools/post_template.md"
       local new_file="$BLOG_ROOT/_posts/$(date +%F)-blog_post.md"
       cp "$template" "$new_file"
-      sed -i "s/19700101/$(date +'%Y%m%d')/" "$new_file"
+      sed -i "s/19700101/$(date +%Y%m%d)/" "$new_file"
       ;;
     root)
       echo "$BLOG_ROOT"
@@ -69,8 +70,8 @@ function _blog {
     case ${COMP_WORDS[1]} in
       cd)
         pushd "$BLOG_ROOT" > /dev/null
-        compopt -o nospace
-        COMPREPLY=($(compgen -d -S / -- "$word"))
+        compopt -o nospace # no extra space after completion
+        COMPREPLY=($(compgen -d -S / -- "$word")) # add suffix /
         popd > /dev/null
         ;;
       edit | list)
