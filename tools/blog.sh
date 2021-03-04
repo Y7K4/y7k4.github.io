@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+BLOG_ROOT="$HOME/Blog"
+
 # blog {cd, edit, list, new, root, run} [args]
 # Examples:
 #   blog cd
@@ -11,66 +13,50 @@
 #   blog list 2020-11
 #   blog new
 #   blog root
-#   blog run
+#   blog
+#   blog run --host=127.0.0.1 --port=8000
 function blog {
   case $1 in
-    cd | edit | list | new | root | run)
-      "_blog-$1" "${@:2}"
+    cd)
+      cd "$BLOG_ROOT/$2"
       ;;
-    "")
-      _blog-run "${@:2}"
+    edit)
+      local editor="code"
+      local posts="$BLOG_ROOT"
+      [[ -n $2 ]] && posts="$(ls "$BLOG_ROOT/_posts/" -1 | grep $2)"
+      [[ -n $3 ]] && editor=$3
+      [[ -z $posts ]] && echo "Posts not found." && return 1
+      pushd "$BLOG_ROOT/_posts" > /dev/null
+      $editor $posts
+      popd > /dev/null
+      ;;
+    list)
+      if [[ -z $2 ]]; then
+        ls "$BLOG_ROOT/_posts/" -1
+      else
+        ls "$BLOG_ROOT/_posts/" -1 | grep "${@:2}"
+      fi
+      ;;
+    new)
+      local template="$BLOG_ROOT/tools/post_template.md"
+      local new_file="$BLOG_ROOT/_posts/$(date +%F)-blog_post.md"
+      cp "$template" "$new_file"
+      sed -i "s/19700101/$(date +'%Y%m%d')/" "$new_file"
+      ;;
+    root)
+      echo "$BLOG_ROOT"
+      ;;
+    run | "")
+      [[ -n $1 ]] && local args="${@:3}" || local args="--host=0.0.0.0"
+      pushd "$BLOG_ROOT" > /dev/null
+      bundle exec jekyll serve $args
+      echo
+      popd > /dev/null
       ;;
     *)
       echo "$1: unknown command"
       ;;
   esac
-}
-
-# _blog-cd [path]
-function _blog-cd {
-  cd "$(_blog-root)/$1"
-}
-
-# _blog-edit [pattern [editor]]
-function _blog-edit {
-  local editor="code"
-  local posts="$(_blog-root)"
-  [[ -n $1 ]] && posts="$(_blog-list $1)"
-  [[ -n $2 ]] && editor=$2
-  [[ -z $posts ]] && echo "Posts not found." && return 1
-  pushd "$(_blog-root)/_posts" > /dev/null
-  $editor $posts
-  popd > /dev/null
-}
-
-# _blog-list [pattern]
-function _blog-list {
-  if [[ -z $1 ]]; then
-    ls "$(_blog-root)/_posts/" -1
-  else
-    ls "$(_blog-root)/_posts/" -1 | grep "$@"
-  fi
-}
-
-# _blog-new
-function _blog-new {
-  local template="$(_blog-root)/tools/post_template.md"
-  local new_file="$(_blog-root)/_posts/$(date +%F)-blog_post.md"
-  cp $template $new_file
-  sed -i "s/19700101/$(date +'%Y%m%d')/" $new_file
-}
-
-# _blog-root
-function _blog-root {
-  echo "$HOME/Blog"
-}
-
-# _blog-run [args]
-function _blog-run {
-  pushd "$(_blog-root)" > /dev/null
-  bundle exec jekyll serve "$@"
-  echo
-  popd > /dev/null
 }
 
 # auto-complete
@@ -82,13 +68,13 @@ function _blog {
   elif [[ $COMP_CWORD == 2 ]]; then
     case ${COMP_WORDS[1]} in
       cd)
-        pushd "$(_blog-root)" > /dev/null
+        pushd "$BLOG_ROOT" > /dev/null
         compopt -o nospace
         COMPREPLY=($(compgen -d -S / -- "$word"))
         popd > /dev/null
         ;;
       edit | list)
-        local posts="$(_blog-list)"
+        local posts="$(blog list)"
         COMPREPLY=($(compgen -W "$posts" -- $word))
         ;;
       *)
