@@ -17,7 +17,7 @@ I wrote a simple command line tool for my blog. Here are a few key takeaways abo
 ## Usage
 
 ```
-blog {cd, edit, list, new, root, run} [args]
+blog [{cd, edit, list, new, push, root, run} [args...]]
 ```
 
 * `cd`: change directory
@@ -36,6 +36,8 @@ blog {cd, edit, list, new, root, run} [args]
   * Autocompletion is available
 * `new`: create a new post file
   * `blog new`: create a new post file using `tools/post_template.md` as template with today as the date
+* `push`: git add + commit + push
+  * `blog push "bug fixes"`: git add + commmit + push with message "bug fixes"
 * `root`: echo the root directory of the blog
   * `blog root`: echo `$BLOG_ROOT`
 * `run`: serve the blog

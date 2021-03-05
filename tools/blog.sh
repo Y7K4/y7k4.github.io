@@ -2,7 +2,7 @@
 
 BLOG_ROOT="$HOME/Blog"
 
-# blog {cd, edit, list, new, root, run} [args]
+# blog [{cd, edit, list, new, push, root, run} [args...]]
 # Examples:
 #   blog cd
 #   blog cd assets/share/
@@ -13,6 +13,7 @@ BLOG_ROOT="$HOME/Blog"
 #   blog list 2020-11
 #   blog list -i MAGIC
 #   blog new
+#   blog push "bug fixes"
 #   blog root
 #   blog
 #   blog run --host=127.0.0.1 --port=8000
@@ -44,11 +45,18 @@ function blog {
       cp "$template" "$new_file"
       sed -i "s/19700101/$(date +%Y%m%d)/" "$new_file"
       ;;
+    push)
+      pushd "$BLOG_ROOT" > /dev/null
+      git add .
+      git commit -m "${@:2}"
+      git push
+      popd > /dev/null
+      ;;
     root)
       echo "$BLOG_ROOT"
       ;;
     run | "")
-      [[ -n $1 ]] && local args="${@:3}" || local args="--host=0.0.0.0"
+      [[ -n $1 ]] && local args="${@:2}" || local args="--host=0.0.0.0"
       pushd "$BLOG_ROOT" > /dev/null
       bundle exec jekyll serve $args
       echo
@@ -64,7 +72,7 @@ function blog {
 function _blog {
   local word=${COMP_WORDS[COMP_CWORD]}
   if [[ $COMP_CWORD == 1 ]]; then
-    local cmds="cd edit list new root run"
+    local cmds="cd edit list new push root run"
     COMPREPLY=($(compgen -W "$cmds" -- $word))
   elif [[ $COMP_CWORD == 2 ]]; then
     case ${COMP_WORDS[1]} in
