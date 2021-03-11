@@ -4,6 +4,7 @@ key: 20210303
 tags:
 - metablog
 - Bash
+modify_date: 2021-03-10
 ---
 
 I wrote a simple command line tool for my blog. Here are a few key takeaways about the tool usage, some Bash language features, several Bash commands, and how to write custom Bash autocompletion function.
