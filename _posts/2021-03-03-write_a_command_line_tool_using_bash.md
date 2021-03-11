@@ -44,7 +44,7 @@ blog [{cd, edit, list, new, push, root, run} [args...]]
   * `blog`: serve the blog at `0.0.0.0:4000`
   * `blog run --host=127.0.0.1 --port=8000`: serve the blog at `127.0.0.1:8000`
 
-The Bash script is in the `tools/` folder. Source it before using.
+The Bash script is on [GitHub]. Source it before using.
 
 
 
@@ -120,7 +120,7 @@ In short, our job is to build `COMPREPLY` based on the other three variable, esp
 
 ### compgen
 
-The command `compgen` is a great tool for this job, and you can try it in command line as follows. `-W "meow meeoow meeeooow"` defines a list of possible words to complete, and `"mee"` is the current word typed so far. The double dashes `--` signify the end of the options (see [here](https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean)).
+The command `compgen` is a convenient tool for this job, and you can try it in command line as follows. `-W "meow meeoow meeeooow"` defines a list of possible words to complete, and `"mee"` is the current word typed so far. The double dashes `--` signify the end of the options (see [here](https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean)).
 
 ```bash
 compgen -W "meow meeoow meeeooow" -- "mee"
@@ -137,7 +137,7 @@ COMPREPLY=($(compgen -d -S / -- "$word")) # add suffix /
 
 ### complete
 
-When you finish the function, add the following line to register it as the autocompletion function.
+When you finish everything, add the following line to register `_blog` as the autocompletion function of `blog`.
 ```bash
 complete -F _blog blog
 ```
