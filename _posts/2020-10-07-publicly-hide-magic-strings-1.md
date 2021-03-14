@@ -10,7 +10,7 @@ modify_date: 2020-11-20
 ---
 
 {%- capture next_in_series -%}
-  {% post_url 2020-10-14-publicly_hide_magic_strings_2 %}
+  {% post_url 2020-10-14-publicly-hide-magic-strings-2 %}
 {%- endcapture -%}
 
 This is the 1st post in the _Publicly Hide Magic Strings_ series ([>>]({{next_in_series}})). A common form of website Easter eggs is magic strings, but how can they be hidden in a public repository? Encryption. In this post, I'll develop a magic string encryption tool based on [crypto-js](https://github.com/brix/crypto-js).

@@ -15,7 +15,7 @@ This is [Y7K4's GitHub Pages](https://y7k4.github.io/) powered by [Jekyll](https
   * Tech: mostly in English
   * Non-Tech: mostly in Chinese
 * Easter eggs
-  * Now there are 7 [magic strings]({% post_url 2020-10-14-publicly_hide_magic_strings_2 %}) in total
+  * Now there are 7 [magic strings]({% post_url 2020-10-14-publicly-hide-magic-strings-2 %}) in total
 * Compatibility
   * Modern browser + PC is recommended
   * On old browsers, some content may be unavailable

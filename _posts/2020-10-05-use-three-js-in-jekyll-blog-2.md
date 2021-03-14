@@ -11,11 +11,11 @@ modify_date: 2020-12-07
 ---
 
 {%- capture prev_in_series -%}
-  {% post_url 2020-10-02-use_three_js_in_jekyll_blog_1 %}
+  {% post_url 2020-10-02-use-three-js-in-jekyll-blog-1 %}
 {%- endcapture -%}
 
 {%- capture next_in_series -%}
-  {% post_url 2020-12-07-use_three_js_in_jekyll_blog_3 %}
+  {% post_url 2020-12-07-use-three-js-in-jekyll-blog-3 %}
 {%- endcapture -%}
 
 

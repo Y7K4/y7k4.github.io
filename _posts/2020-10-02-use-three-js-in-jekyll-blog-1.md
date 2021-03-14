@@ -10,7 +10,7 @@ modify_date: 2020-10-06
 ---
 
 {%- capture next_in_series -%}
-  {% post_url 2020-10-05-use_three_js_in_jekyll_blog_2 %}
+  {% post_url 2020-10-05-use-three-js-in-jekyll-blog-2 %}
 {%- endcapture -%}
 
 

@@ -7,7 +7,7 @@ tags:
 ---
 
 {%- capture prev_in_series -%}
-  {% post_url 2020-10-07-publicly_hide_magic_strings_1 %}
+  {% post_url 2020-10-07-publicly-hide-magic-strings-1 %}
 {%- endcapture -%}
 
 This is the 2nd post in the _Publicly Hide Magic Strings_ series ([<<]({{prev_in_series}})). This post introduces how I embed magic strings in the search box. Yes, it works now!
