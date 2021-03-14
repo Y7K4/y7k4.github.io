@@ -2,6 +2,7 @@
 title: My Blogging Style Guide
 key: 20201001
 tag: metablog
+modify_date: 2021-03-13
 ---
 
 这是一篇只为我自己写的博客风格指南。
@@ -32,7 +33,9 @@ tag: metablog
 
 ## 文件结构
 
-* 博客的文件名应为`yyyy-mm-dd-title.md`，其中`title`部分应为全小写，空格用下划线代替，无其余特殊字符
+* 博客的文件名格式应为`yyyy-mm-dd-post-title.md`
+  * `yyyy`、`mm`、`dd`分别为年月日
+  * `post-title`部分使用英文，字母全小写，空格等符号全部改为`-`
 * 博客的键值应为`yyyymmdd`
 * 博客的标签应为英文，并尽量重复利用
 * 博客中的专有图片、代码等文件存储在`/assets/<key>`中，公用文件存储在`/assets/share`中
