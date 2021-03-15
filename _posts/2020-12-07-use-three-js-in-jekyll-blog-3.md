@@ -2,10 +2,11 @@
 title: Use three.js in Jekyll Blog (3)
 key: 20201207
 tags:
-- three.js
 - JavaScript
 - metablog
 - robotics
+- three.js
+- visualization
 ---
 
 {%- capture prev_in_series -%}

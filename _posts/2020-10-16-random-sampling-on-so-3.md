@@ -5,6 +5,7 @@ tags:
 - math
 - robotics
 - three.js
+- visualization
 mathjax: true
 ---
 

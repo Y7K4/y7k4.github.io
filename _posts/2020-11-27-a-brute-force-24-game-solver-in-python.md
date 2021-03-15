@@ -2,6 +2,7 @@
 title: A Brute Force 24 Game Solver in Python
 key: 20201127
 tags:
+- algorithm
 - Python
 ---
 

@@ -2,8 +2,8 @@
 title: Write a Command Line Tool Using Bash
 key: 20210303
 tags:
-- metablog
 - Bash
+- metablog
 modify_date: 2021-03-10
 ---
 

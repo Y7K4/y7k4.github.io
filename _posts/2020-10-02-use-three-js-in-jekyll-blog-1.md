@@ -2,10 +2,11 @@
 title: Use three.js in Jekyll Blog (1)
 key: 20201002
 tags:
-- three.js
-- JavaScript
 - CSS
+- JavaScript
 - metablog
+- three.js
+- visualization
 modify_date: 2020-10-06
 ---
 

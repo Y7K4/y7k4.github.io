@@ -2,9 +2,10 @@
 title: Runge-Kutta Methods
 key: 20210312
 tags:
-- math
 - algorithm
 - JavaScript
+- math
+- visualization
 mathjax: true
 ---
 

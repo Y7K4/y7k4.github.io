@@ -2,8 +2,8 @@
 title: Keyboard Mapping of Mines on Ubuntu
 key: 20201120
 tags:
+- game
 - Ubuntu
-- Game
 ---
 
 Today I noticed a subtle difference in the keyboard mapping of the game _Mines_ on Ubuntu.
