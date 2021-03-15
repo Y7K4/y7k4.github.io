@@ -1,9 +1,13 @@
 {%- assign _tag_max_size = 1 -%}
 {%- assign _tag_min_size = 1 -%}
 {%- assign _tag_cur_size = 1 -%}
-{%- assign _tags = site.tags | sort -%}
+{% assign _tag_array = "" | split: "" %}
+{% for _tag in site.tags %}
+  {% assign _tag_array = _tag_array | push: _tag[0] %}
+{% endfor %}
+{% assign _tags = _tag_array | sort_natural %}
 {%- for _tag in _tags -%}
-  {%- assign _tag_cur_size = _tag[1].size -%}
+  {%- assign _tag_cur_size = site.tags[_tag].size -%}
   {%- if _tag_cur_size > _tag_max_size -%}
     {%- assign _tag_max_size =  _tag_cur_size -%}
   {%- endif -%}
@@ -23,7 +27,7 @@
       </button>
     </li>
     {%- for _tag in _tags -%}
-      {%- assign _tag_cur_size = _tag[1].size -%}
+      {%- assign _tag_cur_size = site.tags[_tag].size -%}
       {%- assign _tag_min_1 = _tag_min_size -%}
       {%- assign _tag_max_1 = _tag_min_1 | plus: _tag_gap_size -%}
       {%- assign _tag_min_2 = _tag_max_1 -%}
@@ -43,8 +47,8 @@
       {%- else -%}
         {%- assign _c_index = 4 -%}
       {%- endif -%}
-      <li><button type="button" class="button button--pill tag-button tag-button-{{ _c_index }}" data-encode="{{ _tag[0] | strip | url_encode }}">
-          <span>{{ _tag[0] | strip }}</span><div class="tag-button__count">{{ _tag[1].size }}</div>
+      <li><button type="button" class="button button--pill tag-button tag-button-{{ _c_index }}" data-encode="{{ _tag | strip | url_encode }}">
+          <span>{{ _tag | strip }}</span><div class="tag-button__count">{{ site.tags[_tag].size }}</div>
         </button>
       </li>
     {%- endfor -%}
