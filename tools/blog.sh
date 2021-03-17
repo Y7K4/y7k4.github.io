@@ -41,7 +41,7 @@ function blog {
       ;;
     new)
       local template="$BLOG_ROOT/tools/post_template.md"
-      local new_file="$BLOG_ROOT/_posts/$(date +%F)-blog_post.md"
+      local new_file="$BLOG_ROOT/_posts/$(date +%F)-blog-post.md"
       cp "$template" "$new_file"
       sed -i "s/19700101/$(date +%Y%m%d)/" "$new_file"
       ;;
