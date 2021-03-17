@@ -7,7 +7,7 @@ tags:
 - metablog
 - three.js
 - visualization
-modify_date: 2020-10-06
+modify_date: 2021-03-17
 ---
 
 {%- capture next_in_series -%}
@@ -76,8 +76,6 @@ var width = container.clientWidth;
 var height = container.clientHeight;
 ```
 
-~~**TODO**: make this responsive in three.js, i.e., automatically resize the content when the window is resized.~~
-
 Learn [how to make this responsive in three.js]({{next_in_series}}#threejs-on-window-resize), i.e., automatically resize the content when the window is resized.
 
 
@@ -132,11 +130,12 @@ Here is a WebGL renderer. Don't forget to append it as the container's child.
 ```javascript
 // renderer
 renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(width, height);
 container.appendChild(renderer.domElement);
 ```
 
-**TODO**: `antialias: true` does not work on my phone. To be investigated. Try [this](https://github.com/mrdoob/three.js/issues/7655)?
+The line with `setPixelRatio` can improve display quality on mobile devices.
 
 
 
