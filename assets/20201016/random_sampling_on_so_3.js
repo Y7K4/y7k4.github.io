@@ -86,6 +86,7 @@ function init() {
 
   // renderer
   renderer = new THREE.WebGLRenderer({ antialias: true, width: 500 });
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
 
