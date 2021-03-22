@@ -3,7 +3,7 @@ title: Publicly Hide Magic Strings (1)
 key: 20201007
 tags:
 - algorithm
-- crypto-js
+- cryptology
 - JavaScript
 mathjax: true
 modify_date: 2020-11-20
