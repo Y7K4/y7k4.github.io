@@ -3,7 +3,6 @@ title: Use three.js in Jekyll Blog (2)
 key: 20201005
 tags:
 - CSS
-- dat.gui.js
 - JavaScript
 - metablog
 - three.js
