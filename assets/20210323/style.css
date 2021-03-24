@@ -1,0 +1,6 @@
+textarea {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  width: 50%;
+  height: 4em;
+}
