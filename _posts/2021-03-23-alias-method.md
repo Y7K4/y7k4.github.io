@@ -6,6 +6,7 @@ tags:
 - JavaScript
 - visualization
 mathjax: true
+modify_date: 2021-03-25
 ---
 
 This post introduces the alias method for efficient sampling from a finite discrete probability distribution. After preprocessing, it takes constant time to draw random values. An interactive visualization is provided.
@@ -13,6 +14,10 @@ This post introduces the alias method for efficient sampling from a finite discr
 
 
 <!--more-->
+
+
+
+This post focuses on intuitive explanation and visualization. I strongly recommend [this article by Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/) for further reading.
 
 
 
@@ -56,13 +61,13 @@ The sampling works as follows:
 1. Generate a uniformly random `i` from `0` to `n-1`
 2. Return `i` with a probability of `U[i]`, and return `K[i]` otherwise
 
-In other words, we first randomly pick a horizontal bar, and then randomly pick a color from the bar based on the ratio. As you can see, the sampling only takes constant time!
+In other words, we first randomly pick a horizontal bar, and then randomly pick a color from the bar based on the ratio. As you can see, the sampling only takes $O(1)$ time!
 
 
 
 ### Table generation
 
-Despite the efficient sampling, the probability table and the alias table need to be generated during preprocessing. Fortunately, the table generation is not too hard and typically requires $O(n)$ or $O(n\log n)$ time. Actually the tables for a given `p` is not unique, and there are [various ways to generate](https://en.wikipedia.org/wiki/Alias_method#Table_generation). For example, we can initialize the probability table as `p`, and each time from the probability table we select one above average and one below average, fill the smaller one to average using the larger one (this may let the larger one drop below average) and mark the latter as the alias, until all probabilities are equal.
+Despite the efficient sampling, the probability table and the alias table need to be generated during preprocessing. Fortunately, the table generation is not too hard and typically requires $O(n)$ or $O(n\log n)$ time. Actually the tables for a given `p` are not unique, and there are [various ways to generate](https://en.wikipedia.org/wiki/Alias_method#Table_generation). For example, we can initialize the probability table as `p`, and each time from the probability table we select one above average and one below average, fill the smaller one to average using the larger one (this may let the larger one drop below average) and mark the latter as the alias, until all probabilities are equal.
 
 Try the visualization below to understand. You can input the array `p` (not necessarily normalized, see the default one), and use the slider to see how the table structure changes in each iteration. Note that here I followed the convention to multiply all probabilities by `n`, so the average should be `1` instead of `1/n`.
 
@@ -70,6 +75,8 @@ Try the visualization below to understand. You can input the array `p` (not nece
 <div id="div-4"></div>
 
 
+
+<!-- code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.58.4/plotly.min.js"></script>
 <link rel="stylesheet" href="/assets/20210323/style.css">
 <script src='/assets/20210323/color_gen.js'></script>
