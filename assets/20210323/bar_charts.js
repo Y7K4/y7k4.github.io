@@ -55,16 +55,29 @@ Plotly.newPlot(
 update();
 
 function update() {
-  let weights = JSON.parse(document.getElementById("weights").value);
+  // parse input
+  const input = document.getElementById("weights").value;
+  let weights;
+  try {
+    weights = JSON.parse(input);
+  } catch (error) {
+    document.getElementById("weights").value = "Invalid: " + input;
+    return;
+  }
   if (
     !Array.isArray(weights) ||
     !weights.length ||
     !weights.every((e) => Math.sign(e) === 1)
   ) {
+    document.getElementById("weights").value = "Invalid: " + input;
     return;
   }
+
+  // normalize
   const sum = weights.reduce((acc, cur) => acc + cur);
   const p = weights.map((e) => e / sum);
+
+  // plot
   const tables = GetTables(p);
   Plotly.newPlot("div-4", GetData(...tables[tables.length - 1]), {
     title: { text: "Table structure at each iteration" },

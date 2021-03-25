@@ -1,10 +1,9 @@
 function GetTables(p) {
+  // initialize tables
   const n = p.length;
   const probOfIndex = p.map((e) => e * n);
   const probOfAlias = p.map(() => 0);
   const alias = p.map((_, i) => i);
-
-  // initial tables
   const tables = [[probOfIndex.slice(), probOfAlias.slice(), alias.slice()]];
   const small = [];
   const large = [];
