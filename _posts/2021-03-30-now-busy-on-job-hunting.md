@@ -1,5 +1,5 @@
 ---
-title: Now Busy On Job Hunting
+title: Now Busy on Job Hunting
 key: 20210330
 tags:
 - random thoughts
