@@ -31,7 +31,7 @@ Given an array of probabilities `p[0..n-1]`, generate random values `i` with the
 
 ### Uniform distribution
 
-Let's get started with a simple example where `p = [0.2, 0.2, 0.2, 0.2, 0.2]`. The sampling is equivalent to randomly drop a pin in the following horizontal bars, and select the corresponding index.
+Let's get started with a simple example where `p = [0.2, 0.2, 0.2, 0.2, 0.2]`. The sampling is equivalent to randomly dropping a pin in the following horizontal bars, and select the corresponding index.
 
 <div id="div-1"></div>
 
