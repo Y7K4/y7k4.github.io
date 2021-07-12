@@ -41,6 +41,8 @@ tags:
 
 ![humuhumunukunukuapuaa](/assets/20210711/reef_triggerfish.jpg){:.rounded}
 
+[图片来源](https://www.waikikiaquarium.org/experience/animal-guide/fishes/triggerfishes/reef-riggerfish/)
+
 首先扩充一下我在 [repo](https://github.com/Y7K4/pinyin-like-english-words) 中提到的两条：
 
 * 在所有长得像拼音的英文单词中，最长的词是 [humuhumunukunukuapuaa](https://en.wikipedia.org/wiki/Reef_triggerfish)
