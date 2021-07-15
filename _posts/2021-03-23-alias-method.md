@@ -6,7 +6,7 @@ tags:
 - JavaScript
 - visualization
 mathjax: true
-modify_date: 2021-03-25
+modify_date: 2021-07-14
 ---
 
 This post introduces the alias method for efficient sampling from a finite discrete probability distribution. After preprocessing, it takes constant time to draw random values. An interactive visualization is provided.
@@ -31,7 +31,7 @@ Given an array of probabilities `p[0..n-1]`, generate random values `i` with the
 
 ### Uniform distribution
 
-Let's get started with a simple example where `p = [0.2, 0.2, 0.2, 0.2, 0.2]`. The sampling is equivalent to randomly dropping a pin in the following horizontal bars, and select the corresponding index.
+Let's get started with a simple example where `p = [0.2, 0.2, 0.2, 0.2, 0.2]`. The sampling is equivalent to randomly dropping a pin in the following horizontal bars, and selecting the corresponding index.
 
 <div id="div-1"></div>
 
