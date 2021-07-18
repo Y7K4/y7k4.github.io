@@ -1,4 +1,7 @@
 header:
+  - title: Demo
+    url: /demo
+
   - titles:
       # @start locale config
       en      : &EN       Archive
