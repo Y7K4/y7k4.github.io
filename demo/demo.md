@@ -5,3 +5,5 @@ permalink: /demo
 ---
 
 Under construction.
+
+[link](world2d)
