@@ -62,3 +62,12 @@ sources:
     valine: 'https//unpkg.com/valine/dist/Valine.min.js'
     mathjax: 'https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML'
     mermaid: 'https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js'
+  latest:
+    font_awesome: 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/all.css'
+    jquery: 'https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js'
+    # leancloud_js_sdk: not used
+    # chart: not used
+    # gitalk: not used
+    # valine: not used
+    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+    # mermaid: not used
