@@ -1,6 +1,13 @@
 function onHanziChange() {
   const hanzi = document.getElementById("hanzi").value;
   const hanziBytes = new TextEncoder().encode(hanzi);
+  if (hanziBytes.length != 3) {
+    return;
+  }
+  const hanziCodePoint = bytesToCodePoint(hanziBytes);
+  if (0x4e00 > hanziCodePoint && hanziCodePoint > 0x9fa5) {
+    return;
+  }
   const color = bytesToColor(hanziBytes);
   document.getElementById("color").value = color;
   drawCanvas(color, hanzi);
@@ -19,10 +26,7 @@ function onColorChange() {
   const rSafe = safeRangeR.reduce(getClosest);
   for (const r of [rUnsafe, rSafe]) {
     const hanziBytes = new Uint8Array([reverseBits(r), reverseBits(g), reverseBits(b)]);
-    const hanziCodePoint = ((hanziBytes[0] & 0x0f) << 12)
-      + ((hanziBytes[1] & 0x3f) << 6)
-      + (hanziBytes[2] & 0x3f);
-    // code points for hanzi range from 0x4e00 to 0x9fa5
+    const hanziCodePoint = bytesToCodePoint(hanziBytes);
     if (0x4e00 <= hanziCodePoint && hanziCodePoint <= 0x9fa5) {
       const color = bytesToColor(hanziBytes);
       const hanzi = new TextDecoder().decode(hanziBytes);
@@ -55,12 +59,18 @@ function drawCanvas(color, hanzi) {
   ctx.fillText(color, canvas.width / 2, canvas.height - 16);
 }
 
+
 function bytesToColor(bytes) {
   let color = "#";
   for (const byte of bytes) {
     color += ('0' + reverseBits(byte).toString(16)).slice(-2).toUpperCase();
   }
   return color;
+}
+
+
+function bytesToCodePoint(bytes) {
+  return ((bytes[0] & 0x0f) << 12) + ((bytes[1] & 0x3f) << 6) + (bytes[2] & 0x3f);
 }
 
 
